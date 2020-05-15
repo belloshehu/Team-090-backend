@@ -1,6 +1,6 @@
 from django.db import models
 
-rom django.utils import timezone
+from django.utils import timezone
 
 CONTINENTS = [
     ('Africa','Africa'),
@@ -61,12 +61,12 @@ class ServiceProvider(models.Model):
     service_category = models.ForeignKey(Category, on_delete=models.CASCADE)
     picture = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=50)
     description = models.TextField(max_length=200)
-    year_of_experience = models.IntegerField()
-    year_of_establishement = models.DateField(default=timezone.now().date())
+    years_of_experience = models.IntegerField()
+    year_of_establishement = models.DateField(default=timezone.now)
     state = models.ForeignKey(State, on_delete=models.CASCADE)
-    local_government_are = models.ForeignKey(LocalGovernmentArea, on_delete=models.CASCADE)
+    local_government_area = models.ForeignKey(LocalGovernmentArea, on_delete=models.CASCADE)
     country = models.ForeignKey(Country, on_delete=models.CASCADE)
-    supporting_document = models.FileField()
+    supporting_document = models.FileField(null=True)
     rating = models.FloatField()
 
     def __str__(self):
