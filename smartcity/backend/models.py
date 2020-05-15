@@ -43,3 +43,9 @@ class State(models.Model):
         return f'{self.name}'
 
 
+class LocalGovernmentArea(models.Model):
+    name = models.CharField(max_length=100)
+    state = models.ForeignKey(State, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.name}'
