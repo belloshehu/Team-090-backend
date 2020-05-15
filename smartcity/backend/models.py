@@ -9,8 +9,18 @@ CONTINENTS = [
 ]
 # Create your models here.
 class Service(models.Model):
+    """ Model for services rendered"""
     name = models.CharField(max_length=50)
     price = models.DecimalField(max_digits=10, decimal_places=2)
+
+    def __str__(self):
+        return f'{self.name}'
+
+class Category(models.Model):
+    """ Model for service categories"""
+    name = models.CharField(max_length=50)
+    services = models.ForeignKey(Service, on_delete=models.CASCADE)
+    document_required = models.BooleanField(default=False)
 
     def __str__(self):
         return f'{self.name}'
